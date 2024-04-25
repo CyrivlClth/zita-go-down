@@ -1,5 +1,7 @@
+import { Button } from "./components/ui/button"
+
 function App(): React.ReactElement {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>
+  return  <Button variant="outline">Hello world!</Button>
 }
 
 export default App
