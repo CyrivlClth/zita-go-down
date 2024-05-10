@@ -8,10 +8,12 @@ import (
 	"path/filepath"
 )
 
+// Config execute configuration
 type Config struct {
 	Path string `json:"path"`
 }
 
+// GetConfig get configuration
 func GetConfig() (map[string]Config, error) {
 	configDir, err := os.UserHomeDir()
 	if err != nil {
@@ -30,6 +32,7 @@ func GetConfig() (map[string]Config, error) {
 	return r, nil
 }
 
+// Execute execute command
 func Execute(use string, args ...string) error {
 	config, err := GetConfig()
 	if err != nil {
@@ -37,7 +40,7 @@ func Execute(use string, args ...string) error {
 	}
 	u, ok := config[use]
 	if !ok {
-		errors.New("use path not found in config")
+		return errors.New("use path not found in config")
 	}
 	cmd := exec.Command(u.Path, args...)
 	cmd.Stdout = os.Stdout
