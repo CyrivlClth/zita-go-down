@@ -4,3 +4,9 @@ export type NamespaceModel = {
     uid: string
   }
 }
+export type DeploymentModel = {
+  metadata: {
+    name: string
+    namespace: string
+  }
+}
